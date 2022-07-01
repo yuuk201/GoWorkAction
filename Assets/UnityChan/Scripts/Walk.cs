@@ -15,12 +15,37 @@ public class Walk : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey("up"))
+        if (Input.GetKey("up") || Input.GetKey("w"))
         {
-            transform.position += transform.forward * 0.005f;
-            animator.SetBool("is_walking", true);
+            if(Input.GetKey("r")){
+                if(Input.GetKey("space")){
+                    transform.position += transform.forward * 0.015f;
+                    animator.SetBool("is_running", false);
+                    animator.SetBool("is_walking", false);
+                    animator.SetBool("is_jumpping", true);
+                }else{
+                    transform.position += transform.forward * 0.015f;
+                    animator.SetBool("is_running", true);
+                    animator.SetBool("is_walking", false);
+                    animator.SetBool("is_jumpping", false);
+                }
+                
+            }else{
+                if(Input.GetKey("space")){
+                    transform.position += transform.forward * 0.005f;
+                    animator.SetBool("is_running", false);
+                    animator.SetBool("is_walking", false);
+                    animator.SetBool("is_jumpping", true);
+                }else{
+                    transform.position += transform.forward * 0.005f;
+                    animator.SetBool("is_running", false);
+                    animator.SetBool("is_walking", true);
+                    animator.SetBool("is_jumpping", false);
+                }
+            }
+            
         }
-        else if(Input.GetKey("down"))
+        else if(Input.GetKey("down") || Input.GetKey("s"))
         {
             transform.position -= transform.forward * 0.005f;
             animator.SetBool("is_walking", true);
@@ -28,12 +53,14 @@ public class Walk : MonoBehaviour
         else
         {
             animator.SetBool("is_walking", false);
+            animator.SetBool("is_running", false);
+            animator.SetBool("is_jumping", false);
         }
-        if (Input.GetKey("right"))
+        if (Input.GetKey("right") || Input.GetKey("d"))
         {
             transform.Rotate(0, 0.2f, 0);
         }
-        if (Input.GetKey("left"))
+        if (Input.GetKey("left") || Input.GetKey("a"))
         {
             transform.Rotate(0, -0.2f, 0);
         }
