@@ -22,12 +22,13 @@ public class Walk : MonoBehaviour
                     transform.position += transform.forward * 0.015f;
                     animator.SetBool("is_running", false);
                     animator.SetBool("is_walking", false);
-                    animator.SetBool("is_jumpping", true);
+                    animator.SetBool("is_jumping", true);
+                    Debug.Log("a");
                 }else{
                     transform.position += transform.forward * 0.015f;
                     animator.SetBool("is_running", true);
                     animator.SetBool("is_walking", false);
-                    animator.SetBool("is_jumpping", false);
+                    animator.SetBool("is_jumping", false);
                 }
                 
             }else{
@@ -35,12 +36,12 @@ public class Walk : MonoBehaviour
                     transform.position += transform.forward * 0.005f;
                     animator.SetBool("is_running", false);
                     animator.SetBool("is_walking", false);
-                    animator.SetBool("is_jumpping", true);
+                    animator.SetBool("is_jumping", true);
                 }else{
                     transform.position += transform.forward * 0.005f;
                     animator.SetBool("is_running", false);
                     animator.SetBool("is_walking", true);
-                    animator.SetBool("is_jumpping", false);
+                    animator.SetBool("is_jumping", false);
                 }
             }
             
@@ -49,7 +50,12 @@ public class Walk : MonoBehaviour
         {
             transform.position -= transform.forward * 0.005f;
             animator.SetBool("is_walking", true);
-        }
+        }else if(Input.GetKey("space")){
+                    animator.SetBool("is_running", false);
+                    animator.SetBool("is_walking", false);
+                    animator.SetBool("is_jumping", true);
+                }
+            
         else
         {
             animator.SetBool("is_walking", false);
